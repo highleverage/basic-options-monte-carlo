@@ -39,8 +39,8 @@
   (oz/view! (plot-data)))
 
 
-(defn call-option-value [price-at-expiration strike-price]
-  (Math/max (- price-at-expiration strike-price) 0.0))
+(defn call-option-value [^double security-price ^double strike-price]
+  (Math/max (- security-price strike-price) 0.0))
 
 (comment
   (call-option-value 360.0 280.0)
@@ -52,7 +52,7 @@
 
 (comment
   (year-fraction-until (LocalDate/now))
-  (year-fraction-until (. (LocalDate/now) (plusDays 180)))
+  (year-fraction-until (. (LocalDate/now) (plusDays 180))))
 
 (defn present-value [value rate expiration]
   (* (Math/exp (- (* rate expiration))) value))
